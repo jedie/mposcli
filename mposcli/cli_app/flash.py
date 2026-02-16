@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 @app.command
 def flash(
-    port: Annotated[str, tyro.conf.arg(help='Port used for esptoo and mpremote')] = '/dev/ttyUSB0',
+    port: Annotated[str, tyro.conf.arg(help='Port used for esptool and mpremote')] = '/dev/ttyUSB0',
     address: Annotated[str, tyro.conf.arg(help='Address')] = '0x0',
     flash_size: Annotated[str, tyro.conf.arg(help='Flash Size')] = 'detect',
     verify: Annotated[bool, tyro.conf.arg(help='Verify after flashing?')] = True,
@@ -38,9 +38,7 @@ def flash(
     mpos_path = get_mpos_path()
 
     esptool_bin = get_esptool_bin()
-    verbose_check_call(esptool_bin, 'version')
     mpremote_bin = get_mpremote_bin()
-    verbose_check_call(mpremote_bin, '--version')
 
     print('\n')
 

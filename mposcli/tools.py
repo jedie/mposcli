@@ -2,6 +2,8 @@ import shutil
 import sys
 from pathlib import Path
 
+from cli_base.cli_tools.subprocess_utils import verbose_check_call
+
 
 def get_bin(name: str) -> Path:
     bin_path = shutil.which(name)
@@ -14,8 +16,12 @@ def get_bin(name: str) -> Path:
 
 
 def get_esptool_bin() -> Path:
-    return get_bin('esptool')
+    esptool_bin = get_bin('esptool')
+    verbose_check_call(esptool_bin, 'version')
+    return esptool_bin
 
 
 def get_mpremote_bin():
-    return get_bin('mpremote')
+    mpremote_bin = get_bin('mpremote')
+    verbose_check_call(mpremote_bin, '--version')
+    return mpremote_bin
