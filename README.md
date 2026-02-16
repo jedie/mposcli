@@ -36,31 +36,35 @@ usage: mposcli [-h] {build,cp,flash,run-desktop,update-submodules,version}
 
 
 
-╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help             show this help message and exit                                                               │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ subcommands ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ (required)                                                                                                           │
-│   • build              Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:                         │
-│                        https://docs.micropythonos.com/os-development/                                                │
-│   • cp                 Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display a  │
-│                        file chooser to select which files to copy/update. But can also be used to copy/update all    │
-│                        files. see: https://docs.micropythonos.com/os-development/installing-on-esp32/                │
-│   • flash              Flash MicroPythonOS to the device. Display a file chooser to select the image to flash. All   │
-│                        lvgl_micropython/build/*.bin files will be shown in the file chooser. see:                    │
-│                        https://docs.micropythonos.com/os-development/installing-on-esp32/                            │
-│   • run-desktop        Run MicroPythonOS on desktop. see:                                                            │
-│                        https://docs.micropythonos.com/getting-started/running/#running-on-desktop                    │
-│   • update-submodules  Update MicroPythonOS repository and all submodules see:                                       │
-│                        https://docs.micropythonos.com/os-development/linux/#optional-updating-the-code               │
-│   • version            Print version and exit                                                                        │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ──────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help             show this help message and exit                                 │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ subcommands ──────────────────────────────────────────────────────────────────────────╮
+│ (required)                                                                             │
+│   • build              Build MicroPythonOS by calling: ./scripts/build_mpos.sh         │
+│                        <target> see: https://docs.micropythonos.com/os-development/    │
+│   • cp                 Copy/update internal_filesystem/lib/mpos files to the device    │
+│                        via "mpremote fs cp". Display a file chooser to select which    │
+│                        files to copy/update. But can also be used to copy/update all   │
+│                        files. see: https://docs.micropythonos.com/os-development/insta │
+│                        lling-on-esp32/                                                 │
+│   • flash              Flash MicroPythonOS to the device. Display a file chooser to    │
+│                        select the image to flash. All lvgl_micropython/build/*.bin     │
+│                        files will be shown in the file chooser. see: https://docs.micr │
+│                        opythonos.com/os-development/installing-on-esp32/               │
+│   • run-desktop        Run MicroPythonOS on desktop. see: https://docs.micropythonos.c │
+│                        om/getting-started/running/#running-on-desktop                  │
+│   • update-submodules  Update MicroPythonOS repository and all submodules see: https:/ │
+│                        /docs.micropythonos.com/os-development/linux/#optional-updating │
+│                        -the-code                                                       │
+│   • version            Print version and exit                                          │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated main help end ✂✂✂)
 
 
 
-## CLI - build
+## mposcli build
 
 [comment]: <> (✂✂✂ auto generated build start ✂✂✂)
 ```
@@ -79,7 +83,7 @@ Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see: https://do
 
 
 
-## CLI - cp
+## mposcli cp
 
 [comment]: <> (✂✂✂ auto generated cp start ✂✂✂)
 ```
@@ -87,20 +91,21 @@ usage: mposcli cp [-h] [--new-file-limit INT] [--reset | --no-reset] [--repl | -
 
 Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display a file chooser to select which files to copy/update. But can also be used to copy/update all files. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
 
-╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help            show this help message and exit                                                                │
-│ --new-file-limit INT  How many of the newest files to show in the file chooser? (default: 10)                        │
-│ --reset, --no-reset   Reset the device after copy/update? (default: True)                                            │
-│ --repl, --no-repl     After flashing/verify start REPL with mpremote to see the output of the device? (default:      │
-│                       True)                                                                                          │
-│ -v, --verbosity       Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                        │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ──────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help            show this help message and exit                                  │
+│ --new-file-limit INT  How many of the newest files to show in the file chooser?        │
+│                       (default: 10)                                                    │
+│ --reset, --no-reset   Reset the device after copy/update? (default: True)              │
+│ --repl, --no-repl     After flashing/verify start REPL with mpremote to see the output │
+│                       of the device? (default: True)                                   │
+│ -v, --verbosity       Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)          │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated cp end ✂✂✂)
 
 
 
-## CLI - flash
+## mposcli flash
 
 [comment]: <> (✂✂✂ auto generated flash start ✂✂✂)
 ```
@@ -108,22 +113,22 @@ usage: mposcli flash [-h] [FLASH OPTIONS]
 
 Flash MicroPythonOS to the device. Display a file chooser to select the image to flash. All lvgl_micropython/build/*.bin files will be shown in the file chooser. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
 
-╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help             show this help message and exit                                                               │
-│ --port STR             Port used for esptool and mpremote (default: /dev/ttyUSB0)                                    │
-│ --address STR          Address (default: 0x0)                                                                        │
-│ --flash-size STR       Flash Size (default: detect)                                                                  │
-│ --verify, --no-verify  Verify after flashing? (default: True)                                                        │
-│ --repl, --no-repl      After flashing/verify start REPL with mpremote to see the output of the device? (default:     │
-│                        True)                                                                                         │
-│ -v, --verbosity        Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                       │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ──────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help             show this help message and exit                                 │
+│ --port STR             Port used for esptool and mpremote (default: /dev/ttyUSB0)      │
+│ --address STR          Address (default: 0x0)                                          │
+│ --flash-size STR       Flash Size (default: detect)                                    │
+│ --verify, --no-verify  Verify after flashing? (default: True)                          │
+│ --repl, --no-repl      After flashing/verify start REPL with mpremote to see the       │
+│                        output of the device? (default: True)                           │
+│ -v, --verbosity        Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)         │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated flash end ✂✂✂)
 
 
 
-## CLI - run-desktop
+## mposcli run-desktop
 
 
 [comment]: <> (✂✂✂ auto generated run-desktop start ✂✂✂)
@@ -132,19 +137,22 @@ usage: mposcli run-desktop [-h] [--heapsize INT] [--script {None}|STR] [--binary
 
 Run MicroPythonOS on desktop. see: https://docs.micropythonos.com/getting-started/running/#running-on-desktop
 
-╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help           show this help message and exit                                                                 │
-│ --heapsize INT       Heap size in MB (default: 8, same as PSRAM on many ESP32-S3 boards) (default: 8)                │
-│ --script {None}|STR  Script file (.py) or app name to run. If omitted, starts normally. (default: None)              │
-│ --binary {None}|STR  Optional name of the binary to start. If omitted, shows a file chooser to select one from the   │
-│                      lvgl_micropython build directory. (default: None)                                               │
-│ -v, --verbosity      Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                         │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ──────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help           show this help message and exit                                   │
+│ --heapsize INT       Heap size in MB (default: 8, same as PSRAM on many ESP32-S3       │
+│                      boards) (default: 8)                                              │
+│ --script {None}|STR  Script file (.py) or app name to run. If omitted, starts          │
+│                      normally. (default: None)                                         │
+│ --binary {None}|STR  Optional name of the binary to start. If omitted, shows a file    │
+│                      chooser to select one from the lvgl_micropython build directory.  │
+│                      (default: None)                                                   │
+│ -v, --verbosity      Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)           │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated run-desktop end ✂✂✂)
 
 
-## CLI - update-submodules
+## mposcli update-submodules
 
 
 [comment]: <> (✂✂✂ auto generated update-submodules start ✂✂✂)
@@ -189,32 +197,33 @@ usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell
 
 
 
-╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help     show this help message and exit                                                                       │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ subcommands ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ (required)                                                                                                           │
-│   • coverage   Run tests and show coverage report.                                                                   │
-│   • install    Install requirements and 'mposcli' via pip as editable.                                               │
-│   • lint       Check/fix code style by run: "ruff check --fix"                                                       │
-│   • mypy       Run Mypy (configured in pyproject.toml)                                                               │
-│   • nox        Run nox                                                                                               │
-│   • pip-audit  Run pip-audit check against current requirements files                                                │
-│   • publish    Build and upload this project to PyPi                                                                 │
-│   • shell-completion                                                                                                 │
-│                Setup shell completion for this CLI (Currently only for bash shell)                                   │
-│   • test       Run unittests                                                                                         │
-│   • update     Update dependencies (uv.lock) and git pre-commit hooks                                                │
-│   • update-readme-history                                                                                            │
-│                Update project history base on git commits/tags in README.md Will be exited with 1 if the README.md   │
-│                was updated otherwise with 0.                                                                         │
-│                                                                                                                      │
-│                Also, callable via e.g.:                                                                              │
-│                    python -m cli_base update-readme-history -v                                                       │
-│   • update-test-snapshot-files                                                                                       │
-│                Update all test snapshot files (by remove and recreate all snapshot files)                            │
-│   • version    Print version and exit                                                                                │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ──────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help     show this help message and exit                                         │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ subcommands ──────────────────────────────────────────────────────────────────────────╮
+│ (required)                                                                             │
+│   • coverage   Run tests and show coverage report.                                     │
+│   • install    Install requirements and 'mposcli' via pip as editable.                 │
+│   • lint       Check/fix code style by run: "ruff check --fix"                         │
+│   • mypy       Run Mypy (configured in pyproject.toml)                                 │
+│   • nox        Run nox                                                                 │
+│   • pip-audit  Run pip-audit check against current requirements files                  │
+│   • publish    Build and upload this project to PyPi                                   │
+│   • shell-completion                                                                   │
+│                Setup shell completion for this CLI (Currently only for bash shell)     │
+│   • test       Run unittests                                                           │
+│   • update     Update dependencies (uv.lock) and git pre-commit hooks                  │
+│   • update-readme-history                                                              │
+│                Update project history base on git commits/tags in README.md Will be    │
+│                exited with 1 if the README.md was updated otherwise with 0.            │
+│                                                                                        │
+│                Also, callable via e.g.:                                                │
+│                    python -m cli_base update-readme-history -v                         │
+│   • update-test-snapshot-files                                                         │
+│                Update all test snapshot files (by remove and recreate all snapshot     │
+│                files)                                                                  │
+│   • version    Print version and exit                                                  │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated dev help end ✂✂✂)
 
@@ -223,6 +232,8 @@ usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/mposcli/compare/v0.2.0...main)
+  * 2026-02-16 - update README
 * [v0.2.0](https://github.com/jedie/mposcli/compare/v0.1.0...v0.2.0)
   * 2026-02-16 - New CLI command: "cp" with convenience features.
   * 2026-02-16 - New command: "flash" with file selector

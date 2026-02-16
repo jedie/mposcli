@@ -8,6 +8,9 @@ from mposcli import constants
 from mposcli.cli_dev import PACKAGE_ROOT
 
 
+BASE_WIDTH = 90
+
+
 def assert_cli_help_in_readme(text_block: str, marker: str):
     README_PATH = PACKAGE_ROOT / 'README.md'
     assert_is_file(README_PATH)
@@ -25,7 +28,7 @@ def assert_cli_help_in_readme(text_block: str, marker: str):
 class ReadmeTestCase(BaseTestCase):
 
     def test_main_help(self):
-        with NoColorEnvRich():
+        with NoColorEnvRich(width=BASE_WIDTH):
             stdout = invoke(
                 cli_bin=PACKAGE_ROOT / 'cli.py',
                 args=['--help'],
@@ -43,7 +46,7 @@ class ReadmeTestCase(BaseTestCase):
         assert_cli_help_in_readme(text_block=stdout, marker='main help')
 
     def test_dev_help(self):
-        with NoColorEnvRich():
+        with NoColorEnvRich(width=BASE_WIDTH):
             stdout = invoke(
                 cli_bin=PACKAGE_ROOT / 'dev-cli.py',
                 args=['--help'],
@@ -75,7 +78,7 @@ class ReadmeTestCase(BaseTestCase):
 
         for command in commands:
             with self.subTest(command):
-                with NoColorEnvRich():
+                with NoColorEnvRich(width=BASE_WIDTH):
                     stdout = invoke(
                         cli_bin=PACKAGE_ROOT / 'cli.py',
                         args=[command, '--help'],
