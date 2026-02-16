@@ -32,7 +32,7 @@ cd ~/MicroPythonOS
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
 ```
-usage: mposcli [-h] {build,run-desktop,update-submodules,version}
+usage: mposcli [-h] {build,cp,flash,run-desktop,update-submodules,version}
 
 
 
@@ -43,6 +43,12 @@ usage: mposcli [-h] {build,run-desktop,update-submodules,version}
 │ (required)                                                                                                           │
 │   • build              Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:                         │
 │                        https://docs.micropythonos.com/os-development/                                                │
+│   • cp                 Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display a  │
+│                        file chooser to select which files to copy/update. But can also be used to copy/update all    │
+│                        files. see: https://docs.micropythonos.com/os-development/installing-on-esp32/                │
+│   • flash              Flash MicroPythonOS to the device. Display a file chooser to select the image to flash. All   │
+│                        lvgl_micropython/build/*.bin files will be shown in the file chooser. see:                    │
+│                        https://docs.micropythonos.com/os-development/installing-on-esp32/                            │
 │   • run-desktop        Run MicroPythonOS on desktop. see:                                                            │
 │                        https://docs.micropythonos.com/getting-started/running/#running-on-desktop                    │
 │   • update-submodules  Update MicroPythonOS repository and all submodules see:                                       │
@@ -51,6 +57,7 @@ usage: mposcli [-h] {build,run-desktop,update-submodules,version}
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated main help end ✂✂✂)
+
 
 
 ## CLI - build
@@ -69,6 +76,50 @@ Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see: https://do
 ╰──────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated build end ✂✂✂)
+
+
+
+## CLI - cp
+
+[comment]: <> (✂✂✂ auto generated cp start ✂✂✂)
+```
+usage: mposcli cp [-h] [--new-file-limit INT] [--reset | --no-reset] [--repl | --no-repl] [-v]
+
+Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display a file chooser to select which files to copy/update. But can also be used to copy/update all files. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
+
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help            show this help message and exit                                                                │
+│ --new-file-limit INT  How many of the newest files to show in the file chooser? (default: 10)                        │
+│ --reset, --no-reset   Reset the device after copy/update? (default: True)                                            │
+│ --repl, --no-repl     After flashing/verify start REPL with mpremote to see the output of the device? (default:      │
+│                       True)                                                                                          │
+│ -v, --verbosity       Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+[comment]: <> (✂✂✂ auto generated cp end ✂✂✂)
+
+
+
+## CLI - flash
+
+[comment]: <> (✂✂✂ auto generated flash start ✂✂✂)
+```
+usage: mposcli flash [-h] [FLASH OPTIONS]
+
+Flash MicroPythonOS to the device. Display a file chooser to select the image to flash. All lvgl_micropython/build/*.bin files will be shown in the file chooser. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
+
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help             show this help message and exit                                                               │
+│ --port STR             Port used for esptool and mpremote (default: /dev/ttyUSB0)                                    │
+│ --address STR          Address (default: 0x0)                                                                        │
+│ --flash-size STR       Flash Size (default: detect)                                                                  │
+│ --verify, --no-verify  Verify after flashing? (default: True)                                                        │
+│ --repl, --no-repl      After flashing/verify start REPL with mpremote to see the output of the device? (default:     │
+│                        True)                                                                                         │
+│ -v, --verbosity        Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                       │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+[comment]: <> (✂✂✂ auto generated flash end ✂✂✂)
 
 
 
@@ -172,7 +223,11 @@ usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/mposcli/compare/1695026...main)
+* [v0.2.0](https://github.com/jedie/mposcli/compare/v0.1.0...v0.2.0)
+  * 2026-02-16 - New CLI command: "cp" with convenience features.
+  * 2026-02-16 - New command: "flash" with file selector
+  * 2026-02-16 - Update README.md
+* [v0.1.0](https://github.com/jedie/mposcli/compare/1695026...v0.1.0)
   * 2026-02-16 - Add "update-submodules" command
   * 2026-02-16 - Add "build" command
   * 2026-02-16 - CLI command: "run-desktop"
