@@ -4,5 +4,5 @@
 """
 
 # See https://packaging.python.org/en/latest/specifications/version-specifiers/
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 __author__ = 'Jens Diemer <cookiecutter_templates@jensdiemer.de>'

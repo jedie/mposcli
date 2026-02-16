@@ -155,6 +155,7 @@ usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/mposcli/compare/1695026...main)
+  * 2026-02-16 - Add "update-submodules" command
   * 2026-02-16 - Add "build" command
   * 2026-02-16 - CLI command: "run-desktop"
   * 2026-02-16 - first commit
