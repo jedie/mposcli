@@ -12,18 +12,19 @@ CLI helper for MicroPythonOS: https://github.com/MicroPythonOS/MicroPythonOS
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
 ```
-usage: ./cli.py [-h] {shell-completion,version}
+usage: ./cli.py [-h] {run-desktop,version}
 
 
 
-╭─ options ─────────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help            show this help message and exit                                     │
-╰───────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ subcommands ─────────────────────────────────────────────────────────────────────────────╮
-│ (required)                                                                                │
-│   • shell-completion  Setup shell completion for this CLI (Currently only for bash shell) │
-│   • version           Print version and exit                                              │
-╰───────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help       show this help message and exit                                                                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ subcommands ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ (required)                                                                                                           │
+│   • run-desktop  Run MicroPythonOS on desktop.                                                                       │
+│                  https://docs.micropythonos.com/getting-started/running/#running-on-desktop                          │
+│   • version      Print version and exit                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated main help end ✂✂✂)
 
@@ -58,7 +59,7 @@ usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell
 ╭─ subcommands ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ (required)                                                                                                           │
 │   • coverage   Run tests and show coverage report.                                                                   │
-│   • install    Install requirements and 'mposcli' via pip as editable.                                     │
+│   • install    Install requirements and 'mposcli' via pip as editable.                                               │
 │   • lint       Check/fix code style by run: "ruff check --fix"                                                       │
 │   • mypy       Run Mypy (configured in pyproject.toml)                                                               │
 │   • nox        Run nox                                                                                               │
@@ -86,6 +87,8 @@ usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-
+* [**dev**](https://github.com/jedie/mposcli/compare/1695026...main)
+  * 2026-02-16 - CLI command: "run-desktop"
+  * 2026-02-16 - first commit
 
 [comment]: <> (✂✂✂ auto generated history end ✂✂✂)
