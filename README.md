@@ -10,6 +10,24 @@ Experimental CLI helper for MicroPythonOS: https://github.com/MicroPythonOS/Micr
 
 Main Idea: Install it via pipx (see below) and use `mposcli` command in MicroPythonOS repository path.
 
+Install, e.g.:
+
+```
+sudo apt install pipx
+
+pipx install mposcli
+```
+
+To upgrade an existing installation: Just call: `pipx upgrade PyHardLinkBackup`
+
+Usage e.g.:
+
+```
+cd ~/MicroPythonOS
+~/MicroPythonOS$ mposcli run-desktop
+```
+
+
 ## CLI
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
