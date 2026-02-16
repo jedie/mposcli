@@ -63,7 +63,16 @@ class ReadmeTestCase(BaseTestCase):
         assert_cli_help_in_readme(text_block=stdout, marker='dev help')
 
     def test_cli_commands(self):
-        commands = ('build', 'run-desktop')
+        from mposcli.cli_app import app
+
+        # Dynamically build command list from app object
+        # tyro SubcommandApp stores subcommands in _subcommands dict
+        commands = set(command.replace('_', '-') for command in app._subcommands.keys())
+
+        commands.discard('version')  # version is pseudo command, because the version always printed on every CLI call
+        commands = sorted(commands)
+        self.assertEqual(commands, ['build', 'run-desktop', 'update-submodules'])
+
         for command in commands:
             with self.subTest(command):
                 with NoColorEnvRich():

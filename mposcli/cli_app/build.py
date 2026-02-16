@@ -27,7 +27,7 @@ def build(
 ):
     """
     Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target>
-    https://docs.micropythonos.com/os-development/
+    see: https://docs.micropythonos.com/os-development/
     """
     setup_logging(verbosity=verbosity)
 

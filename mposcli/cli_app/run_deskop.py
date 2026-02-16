@@ -44,7 +44,7 @@ def run_desktop(
 ):
     """
     Run MicroPythonOS on desktop.
-    https://docs.micropythonos.com/getting-started/running/#running-on-desktop
+    see: https://docs.micropythonos.com/getting-started/running/#running-on-desktop
     """
     setup_logging(verbosity=verbosity)
 

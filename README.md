@@ -14,20 +14,22 @@ Main Idea: Install it via pipx (see below) and use `mposcli` command in MicroPyt
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
 ```
-usage: mposcli [-h] {build,run-desktop,version}
+usage: mposcli [-h] {build,run-desktop,update-submodules,version}
 
 
 
 ╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help       show this help message and exit                                                                     │
+│ -h, --help             show this help message and exit                                                               │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ╭─ subcommands ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ (required)                                                                                                           │
-│   • build        Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target>                                    │
-│                  https://docs.micropythonos.com/os-development/                                                      │
-│   • run-desktop  Run MicroPythonOS on desktop.                                                                       │
-│                  https://docs.micropythonos.com/getting-started/running/#running-on-desktop                          │
-│   • version      Print version and exit                                                                              │
+│   • build              Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:                         │
+│                        https://docs.micropythonos.com/os-development/                                                │
+│   • run-desktop        Run MicroPythonOS on desktop. see:                                                            │
+│                        https://docs.micropythonos.com/getting-started/running/#running-on-desktop                    │
+│   • update-submodules  Update MicroPythonOS repository and all submodules see:                                       │
+│                        https://docs.micropythonos.com/os-development/linux/#optional-updating-the-code               │
+│   • version            Print version and exit                                                                        │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated main help end ✂✂✂)
@@ -39,7 +41,7 @@ usage: mposcli [-h] {build,run-desktop,version}
 ```
 usage: mposcli build [-h] [--target {esp32,esp32s3,unix,macOS}] [-v]
 
-Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> https://docs.micropythonos.com/os-development/
+Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see: https://docs.micropythonos.com/os-development/
 
 ╭─ options ────────────────────────────────────────────────────────────────╮
 │ -h, --help       show this help message and exit                         │
@@ -59,7 +61,7 @@ Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> https://docs.mi
 ```
 usage: mposcli run-desktop [-h] [--heapsize INT] [--script {None}|STR] [--binary {None}|STR] [-v]
 
-Run MicroPythonOS on desktop. https://docs.micropythonos.com/getting-started/running/#running-on-desktop
+Run MicroPythonOS on desktop. see: https://docs.micropythonos.com/getting-started/running/#running-on-desktop
 
 ╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ -h, --help           show this help message and exit                                                                 │
@@ -71,6 +73,23 @@ Run MicroPythonOS on desktop. https://docs.micropythonos.com/getting-started/run
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated run-desktop end ✂✂✂)
+
+
+## CLI - update-submodules
+
+
+[comment]: <> (✂✂✂ auto generated update-submodules start ✂✂✂)
+```
+usage: mposcli update-submodules [-h] [-v]
+
+Update MicroPythonOS repository and all submodules see: https://docs.micropythonos.com/os-development/linux/#optional-updating-the-code
+
+╭─ options ────────────────────────────────────────────────────────────────╮
+│ -h, --help       show this help message and exit                         │
+│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable) │
+╰──────────────────────────────────────────────────────────────────────────╯
+```
+[comment]: <> (✂✂✂ auto generated update-submodules end ✂✂✂)
 
 
 
