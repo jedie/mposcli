@@ -6,13 +6,15 @@
 [![Python Versions](https://img.shields.io/pypi/pyversions/mposcli)](https://github.com/jedie/mposcli/blob/main/pyproject.toml)
 [![License GPL-3.0-or-later](https://img.shields.io/pypi/l/mposcli)](https://github.com/jedie/mposcli/blob/main/LICENSE)
 
-CLI helper for MicroPythonOS: https://github.com/MicroPythonOS/MicroPythonOS
+Experimental CLI helper for MicroPythonOS: https://github.com/MicroPythonOS/MicroPythonOS
+
+Main Idea: Install it via pipx (see below) and use `mposcli` command in MicroPythonOS repository path.
 
 ## CLI
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
 ```
-usage: ./cli.py [-h] {run-desktop,version}
+usage: mposcli [-h] {build,run-desktop,version}
 
 
 
@@ -21,12 +23,58 @@ usage: ./cli.py [-h] {run-desktop,version}
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ╭─ subcommands ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ (required)                                                                                                           │
+│   • build        Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target>                                    │
+│                  https://docs.micropythonos.com/os-development/                                                      │
 │   • run-desktop  Run MicroPythonOS on desktop.                                                                       │
 │                  https://docs.micropythonos.com/getting-started/running/#running-on-desktop                          │
 │   • version      Print version and exit                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated main help end ✂✂✂)
+
+
+## CLI - build
+
+[comment]: <> (✂✂✂ auto generated build start ✂✂✂)
+```
+usage: mposcli build [-h] [--target {esp32,esp32s3,unix,macOS}] [-v]
+
+Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> https://docs.micropythonos.com/os-development/
+
+╭─ options ────────────────────────────────────────────────────────────────╮
+│ -h, --help       show this help message and exit                         │
+│ --target {esp32,esp32s3,unix,macOS}                                      │
+│                  Target platform to build for. (default: unix)           │
+│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable) │
+╰──────────────────────────────────────────────────────────────────────────╯
+```
+[comment]: <> (✂✂✂ auto generated build end ✂✂✂)
+
+
+
+## CLI - run-desktop
+
+
+[comment]: <> (✂✂✂ auto generated run-desktop start ✂✂✂)
+```
+usage: mposcli run-desktop [-h] [--heapsize INT] [--script {None}|STR] [--binary {None}|STR] [-v]
+
+Run MicroPythonOS on desktop. https://docs.micropythonos.com/getting-started/running/#running-on-desktop
+
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help           show this help message and exit                                                                 │
+│ --heapsize INT       Heap size in MB (default: 8, same as PSRAM on many ESP32-S3 boards) (default: 8)                │
+│ --script {None}|STR  Script file (.py) or app name to run. If omitted, starts normally. (default: None)              │
+│ --binary {None}|STR  Optional name of the binary to start. If omitted, shows a file chooser to select one from the   │
+│                      lvgl_micropython build directory. (default: None)                                               │
+│ -v, --verbosity      Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+[comment]: <> (✂✂✂ auto generated run-desktop end ✂✂✂)
+
+
+
+
 
 
 ## start development
@@ -88,6 +136,7 @@ usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/mposcli/compare/1695026...main)
+  * 2026-02-16 - Add "build" command
   * 2026-02-16 - CLI command: "run-desktop"
   * 2026-02-16 - first commit
 

@@ -26,11 +26,15 @@ class ReadmeTestCase(BaseTestCase):
 
     def test_main_help(self):
         with NoColorEnvRich():
-            stdout = invoke(cli_bin=PACKAGE_ROOT / 'cli.py', args=['--help'], strip_line_prefix='usage: ')
+            stdout = invoke(
+                cli_bin=PACKAGE_ROOT / 'cli.py',
+                args=['--help'],
+                strip_line_prefix='usage: ',
+            )
         assert_in(
             content=stdout,
             parts=(
-                'usage: ./cli.py [-h]',
+                'usage: mposcli [-h]',
                 ' version ',
                 'Print version and exit',
                 constants.CLI_EPILOG,
@@ -40,7 +44,11 @@ class ReadmeTestCase(BaseTestCase):
 
     def test_dev_help(self):
         with NoColorEnvRich():
-            stdout = invoke(cli_bin=PACKAGE_ROOT / 'dev-cli.py', args=['--help'], strip_line_prefix='usage: ')
+            stdout = invoke(
+                cli_bin=PACKAGE_ROOT / 'dev-cli.py',
+                args=['--help'],
+                strip_line_prefix='usage: ',
+            )
         assert_in(
             content=stdout,
             parts=(
@@ -53,3 +61,19 @@ class ReadmeTestCase(BaseTestCase):
             ),
         )
         assert_cli_help_in_readme(text_block=stdout, marker='dev help')
+
+    def test_cli_commands(self):
+        commands = ('build', 'run-desktop')
+        for command in commands:
+            with self.subTest(command):
+                with NoColorEnvRich():
+                    stdout = invoke(
+                        cli_bin=PACKAGE_ROOT / 'cli.py',
+                        args=[command, '--help'],
+                        strip_line_prefix='usage: ',
+                    )
+                assert_in(
+                    content=stdout,
+                    parts=(f'usage: mposcli {command} [-h]',),
+                )
+                assert_cli_help_in_readme(text_block=stdout, marker=command)
