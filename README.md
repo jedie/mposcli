@@ -233,6 +233,7 @@ usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/mposcli/compare/v0.2.0...main)
+  * 2026-02-17 - Update requirements
   * 2026-02-16 - update README
 * [v0.2.0](https://github.com/jedie/mposcli/compare/v0.1.0...v0.2.0)
   * 2026-02-16 - New CLI command: "cp" with convenience features.
