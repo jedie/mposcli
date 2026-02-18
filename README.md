@@ -32,7 +32,7 @@ cd ~/MicroPythonOS
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
 ```
-usage: mposcli [-h] {build,cp,flash,run-desktop,update-submodules,version}
+usage: mposcli [-h] {build,cp,flash,run-desktop,update,update-submodules,version}
 
 
 
@@ -54,9 +54,14 @@ usage: mposcli [-h] {build,cp,flash,run-desktop,update-submodules,version}
 │                        opythonos.com/os-development/installing-on-esp32/               │
 │   • run-desktop        Run MicroPythonOS on desktop. see: https://docs.micropythonos.c │
 │                        om/getting-started/running/#running-on-desktop                  │
-│   • update-submodules  Update MicroPythonOS repository and all submodules see: https:/ │
-│                        /docs.micropythonos.com/os-development/linux/#optional-updating │
-│                        -the-code                                                       │
+│   • update             Update MicroPythonOS repository. Assume that there is a         │
+│                        "origin" and/or "upstream" remote configured. Will also ask if  │
+│                        you want to update the submodules as well, which is             │
+│                        recommended.                                                    │
+│   • update-submodules  Updates MicroPythonOS git submodules only. Use "mposcli update" │
+│                        to update the main repository and optionally the submodules as  │
+│                        well. see: https://docs.micropythonos.com/os-development/linux/ │
+│                        #optional-updating-the-code                                     │
 │   • version            Print version and exit                                          │
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
@@ -70,7 +75,8 @@ usage: mposcli [-h] {build,cp,flash,run-desktop,update-submodules,version}
 ```
 usage: mposcli build [-h] [--target {esp32,esp32s3,unix,macOS}] [-v]
 
-Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see: https://docs.micropythonos.com/os-development/
+Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:
+https://docs.micropythonos.com/os-development/
 
 ╭─ options ────────────────────────────────────────────────────────────────╮
 │ -h, --help       show this help message and exit                         │
@@ -87,9 +93,12 @@ Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see: https://do
 
 [comment]: <> (✂✂✂ auto generated cp start ✂✂✂)
 ```
-usage: mposcli cp [-h] [--new-file-limit INT] [--reset | --no-reset] [--repl | --no-repl] [-v]
+usage: mposcli cp [-h] [--new-file-limit INT] [--reset | --no-reset] [--repl | --no-repl]
+[-v]
 
-Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display a file chooser to select which files to copy/update. But can also be used to copy/update all files. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
+Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display
+a file chooser to select which files to copy/update. But can also be used to copy/update
+all files. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
 
 ╭─ options ──────────────────────────────────────────────────────────────────────────────╮
 │ -h, --help            show this help message and exit                                  │
@@ -111,7 +120,9 @@ Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp
 ```
 usage: mposcli flash [-h] [FLASH OPTIONS]
 
-Flash MicroPythonOS to the device. Display a file chooser to select the image to flash. All lvgl_micropython/build/*.bin files will be shown in the file chooser. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
+Flash MicroPythonOS to the device. Display a file chooser to select the image to flash.
+All lvgl_micropython/build/*.bin files will be shown in the file chooser. see:
+https://docs.micropythonos.com/os-development/installing-on-esp32/
 
 ╭─ options ──────────────────────────────────────────────────────────────────────────────╮
 │ -h, --help             show this help message and exit                                 │
@@ -133,9 +144,11 @@ Flash MicroPythonOS to the device. Display a file chooser to select the image to
 
 [comment]: <> (✂✂✂ auto generated run-desktop start ✂✂✂)
 ```
-usage: mposcli run-desktop [-h] [--heapsize INT] [--script {None}|STR] [--binary {None}|STR] [-v]
+usage: mposcli run-desktop [-h] [--heapsize INT] [--script {None}|STR] [--binary
+{None}|STR] [-v]
 
-Run MicroPythonOS on desktop. see: https://docs.micropythonos.com/getting-started/running/#running-on-desktop
+Run MicroPythonOS on desktop. see: https://docs.micropythonos.com/getting-
+started/running/#running-on-desktop
 
 ╭─ options ──────────────────────────────────────────────────────────────────────────────╮
 │ -h, --help           show this help message and exit                                   │
@@ -152,6 +165,28 @@ Run MicroPythonOS on desktop. see: https://docs.micropythonos.com/getting-starte
 [comment]: <> (✂✂✂ auto generated run-desktop end ✂✂✂)
 
 
+
+## mposcli update
+
+
+[comment]: <> (✂✂✂ auto generated update start ✂✂✂)
+```
+usage: mposcli update [-h] [-v]
+
+Update MicroPythonOS repository. Assume that there is a "origin" and/or "upstream" remote
+configured. Will also ask if you want to update the submodules as well, which is
+recommended.
+
+╭─ options ────────────────────────────────────────────────────────────────╮
+│ -h, --help       show this help message and exit                         │
+│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable) │
+╰──────────────────────────────────────────────────────────────────────────╯
+```
+[comment]: <> (✂✂✂ auto generated update end ✂✂✂)
+
+
+
+
 ## mposcli update-submodules
 
 
@@ -159,7 +194,9 @@ Run MicroPythonOS on desktop. see: https://docs.micropythonos.com/getting-starte
 ```
 usage: mposcli update-submodules [-h] [-v]
 
-Update MicroPythonOS repository and all submodules see: https://docs.micropythonos.com/os-development/linux/#optional-updating-the-code
+Updates MicroPythonOS git submodules only. Use "mposcli update" to update the main
+repository and optionally the submodules as well. see: https://docs.micropythonos.com/os-
+development/linux/#optional-updating-the-code
 
 ╭─ options ────────────────────────────────────────────────────────────────╮
 │ -h, --help       show this help message and exit                         │
@@ -193,7 +230,8 @@ A virtual environment will be created/updated automatically.
 
 [comment]: <> (✂✂✂ auto generated dev help start ✂✂✂)
 ```
-usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell-completion,test,update,update-readme-history,update-test-snapshot-files,version}
+usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell-
+completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 
 
@@ -232,7 +270,8 @@ usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/mposcli/compare/v0.2.0...main)
+* [v0.3.0](https://github.com/jedie/mposcli/compare/v0.2.0...v0.3.0)
+  * 2026-02-18 - Add "update" beside "update-submodules"
   * 2026-02-17 - Update requirements
   * 2026-02-16 - update README
 * [v0.2.0](https://github.com/jedie/mposcli/compare/v0.1.0...v0.2.0)
