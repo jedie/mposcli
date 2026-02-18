@@ -1,3 +1,5 @@
+import textwrap
+
 from bx_py_utils.auto_doc import assert_readme_block
 from bx_py_utils.path import assert_is_file
 from cli_base.cli_tools.test_utils.assertion import assert_in
@@ -16,6 +18,13 @@ def assert_cli_help_in_readme(text_block: str, marker: str):
     assert_is_file(README_PATH)
 
     text_block = text_block.replace(constants.CLI_EPILOG, '')
+
+    # tyro doesn't add line breaks in DocStrings. So we need to add them manually for better readability in the README:
+    wrapped_lines = []
+    for line in text_block.splitlines():
+        wrapped_lines.extend(textwrap.wrap(line, width=BASE_WIDTH) or [''])
+    text_block = '\n'.join(wrapped_lines)
+
     text_block = f'```\n{text_block.strip()}\n```'
     assert_readme_block(
         readme_path=README_PATH,
@@ -74,7 +83,7 @@ class ReadmeTestCase(BaseTestCase):
 
         commands.discard('version')  # version is pseudo command, because the version always printed on every CLI call
         commands = sorted(commands)
-        self.assertEqual(commands, ['build', 'cp', 'flash', 'run-desktop', 'update-submodules'])
+        self.assertEqual(commands, ['build', 'cp', 'flash', 'run-desktop', 'update', 'update-submodules'])
 
         for command in commands:
             with self.subTest(command):
