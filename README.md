@@ -274,6 +274,10 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.3.1](https://github.com/jedie/mposcli/compare/v0.3.0...v0.3.1)
+  * 2026-02-23 - Update requirements and fix code style
+  * 2026-02-23 - "build" command: target as positional argument
+  * 2026-02-23 - Expand "cp" command and allow optional filesystem path
 * [v0.3.0](https://github.com/jedie/mposcli/compare/v0.2.0...v0.3.0)
   * 2026-02-18 - Add "update" beside "update-submodules"
   * 2026-02-17 - Update requirements

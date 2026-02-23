@@ -79,7 +79,7 @@ class ReadmeTestCase(BaseTestCase):
 
         # Dynamically build command list from app object
         # tyro SubcommandApp stores subcommands in _subcommands dict
-        commands = set(command.replace('_', '-') for command in app._subcommands.keys())
+        commands = {command.replace('_', '-') for command in app._subcommands}
 
         commands.discard('version')  # version is pseudo command, because the version always printed on every CLI call
         commands = sorted(commands)

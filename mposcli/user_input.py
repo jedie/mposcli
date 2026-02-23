@@ -21,7 +21,7 @@ def file_chooser(paths) -> Path | None:
 
     print('[bold]Choose a file:[/bold]\n')
     for idx, (p, mtime) in enumerate(files):
-        dt = datetime.datetime.fromtimestamp(mtime).strftime('%Y-%m-%d %H:%M:%S')
+        dt = datetime.datetime.fromtimestamp(mtime).astimezone().strftime('%Y-%m-%d %H:%M:%S')
         print(f'[{idx}] {dt} - {p.name}')
 
     print()
@@ -30,7 +30,7 @@ def file_chooser(paths) -> Path | None:
     print('Selected:', number)
     try:
         number = int(number)
-    except Exception as err:
+    except ValueError as err:
         print(f'[red]Invalid input: {err}[/red]')
         sys.exit(1)
 
@@ -60,7 +60,7 @@ def get_newest_files(directory, limit=10) -> Path | None:
 
     print(f'[bold]Choose a file[/bold] (only from the newest {limit}):\n')
     for idx, (entry, mtime) in enumerate(files[:limit]):
-        dt = datetime.datetime.fromtimestamp(mtime).strftime('%Y-%m-%d %H:%M:%S')
+        dt = datetime.datetime.fromtimestamp(mtime).astimezone().strftime('%Y-%m-%d %H:%M:%S')
         rel_path = Path(entry.path).relative_to(directory)
         print(f'[{idx}] {dt} - {rel_path}')
 
@@ -73,7 +73,7 @@ def get_newest_files(directory, limit=10) -> Path | None:
 
     try:
         number = int(number)
-    except Exception as err:
+    except ValueError as err:
         print(f'[red]Invalid input: {err}[/red]')
         sys.exit(1)
 
