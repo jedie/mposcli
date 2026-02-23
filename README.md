@@ -93,13 +93,15 @@ https://docs.micropythonos.com/os-development/
 
 [comment]: <> (✂✂✂ auto generated cp start ✂✂✂)
 ```
-usage: mposcli cp [-h] [--new-file-limit INT] [--reset | --no-reset] [--repl | --no-repl]
-[-v]
+usage: mposcli cp [-h] [CP OPTIONS]
 
 Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display
 a file chooser to select which files to copy/update. But can also be used to copy/update
 all files. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
 
+╭─ positional arguments ─────────────────────────────────────────────────────────────────╮
+│ [{None}|PATH]         Optional file or directory path. (default: None)                 │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 ╭─ options ──────────────────────────────────────────────────────────────────────────────╮
 │ -h, --help            show this help message and exit                                  │
 │ --new-file-limit INT  How many of the newest files to show in the file chooser?        │
