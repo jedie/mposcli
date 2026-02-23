@@ -2,7 +2,7 @@ import logging
 import sys
 from pathlib import Path
 
-from rich import print  # noqa
+from rich import print
 
 
 logger = logging.getLogger(__name__)
@@ -24,5 +24,5 @@ def get_mpos_path() -> Path:
             print('Hint: Call "mposcli" only in the root directory of a MicroPythonOS project!')
             sys.exit(1)
 
-    mpos_path = current_path
-    return mpos_path
+    return current_path
+

@@ -73,15 +73,17 @@ usage: mposcli [-h] {build,cp,flash,run-desktop,update,update-submodules,version
 
 [comment]: <> (✂✂✂ auto generated build start ✂✂✂)
 ```
-usage: mposcli build [-h] [--target {esp32,esp32s3,unix,macOS}] [-v]
+usage: mposcli build [-h] [{esp32,esp32s3,unix,macOS}] [-v]
 
 Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:
 https://docs.micropythonos.com/os-development/
 
+╭─ positional arguments ───────────────────────────────────────────────────╮
+│ [{esp32,esp32s3,unix,macOS}]                                             │
+│                  Target platform to build for. (default: unix)           │
+╰──────────────────────────────────────────────────────────────────────────╯
 ╭─ options ────────────────────────────────────────────────────────────────╮
 │ -h, --help       show this help message and exit                         │
-│ --target {esp32,esp32s3,unix,macOS}                                      │
-│                  Target platform to build for. (default: unix)           │
 │ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable) │
 ╰──────────────────────────────────────────────────────────────────────────╯
 ```
@@ -93,13 +95,15 @@ https://docs.micropythonos.com/os-development/
 
 [comment]: <> (✂✂✂ auto generated cp start ✂✂✂)
 ```
-usage: mposcli cp [-h] [--new-file-limit INT] [--reset | --no-reset] [--repl | --no-repl]
-[-v]
+usage: mposcli cp [-h] [CP OPTIONS]
 
 Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display
 a file chooser to select which files to copy/update. But can also be used to copy/update
 all files. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
 
+╭─ positional arguments ─────────────────────────────────────────────────────────────────╮
+│ [{None}|PATH]         Optional file or directory path. (default: None)                 │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 ╭─ options ──────────────────────────────────────────────────────────────────────────────╮
 │ -h, --help            show this help message and exit                                  │
 │ --new-file-limit INT  How many of the newest files to show in the file chooser?        │
@@ -270,6 +274,10 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.3.1](https://github.com/jedie/mposcli/compare/v0.3.0...v0.3.1)
+  * 2026-02-23 - Update requirements and fix code style
+  * 2026-02-23 - "build" command: target as positional argument
+  * 2026-02-23 - Expand "cp" command and allow optional filesystem path
 * [v0.3.0](https://github.com/jedie/mposcli/compare/v0.2.0...v0.3.0)
   * 2026-02-18 - Add "update" beside "update-submodules"
   * 2026-02-17 - Update requirements

@@ -3,7 +3,7 @@ import logging
 from cli_base.cli_tools.git import Git
 from cli_base.cli_tools.verbosity import setup_logging
 from cli_base.tyro_commands import TyroVerbosityArgType
-from rich import print  # noqa
+from rich import print
 
 from mposcli.cli_app import app
 from mposcli.mpos_utils import get_mpos_path

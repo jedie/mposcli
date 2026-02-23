@@ -10,7 +10,7 @@ from bx_py_utils.path import assert_is_file
 from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from cli_base.cli_tools.verbosity import setup_logging
 from cli_base.tyro_commands import TyroVerbosityArgType
-from rich import print  # noqa
+from rich import print
 
 from mposcli.cli_app import app
 from mposcli.fs_utils import list_executables
@@ -86,7 +86,8 @@ def run_desktop(
                 with config_file.open('r', encoding='utf-8') as f:
                     try:
                         config = json.load(f)
-                    except Exception:
+                    except json.JSONDecodeError as err:
+                        logger.error('Error parsing config file: %s: %s', config_file, err)
                         config = {}
             else:
                 config = {}
