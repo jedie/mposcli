@@ -23,6 +23,7 @@ def build(
             help='Target platform to build for.',
         ),
     ] = 'unix',
+    /,
     verbosity: TyroVerbosityArgType = 1,
 ):
     """

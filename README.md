@@ -73,15 +73,17 @@ usage: mposcli [-h] {build,cp,flash,run-desktop,update,update-submodules,version
 
 [comment]: <> (✂✂✂ auto generated build start ✂✂✂)
 ```
-usage: mposcli build [-h] [--target {esp32,esp32s3,unix,macOS}] [-v]
+usage: mposcli build [-h] [{esp32,esp32s3,unix,macOS}] [-v]
 
 Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:
 https://docs.micropythonos.com/os-development/
 
+╭─ positional arguments ───────────────────────────────────────────────────╮
+│ [{esp32,esp32s3,unix,macOS}]                                             │
+│                  Target platform to build for. (default: unix)           │
+╰──────────────────────────────────────────────────────────────────────────╯
 ╭─ options ────────────────────────────────────────────────────────────────╮
 │ -h, --help       show this help message and exit                         │
-│ --target {esp32,esp32s3,unix,macOS}                                      │
-│                  Target platform to build for. (default: unix)           │
 │ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable) │
 ╰──────────────────────────────────────────────────────────────────────────╯
 ```
