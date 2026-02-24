@@ -32,7 +32,7 @@ cd ~/MicroPythonOS
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
 ```
-usage: mposcli [-h] {build,cp,flash,run-desktop,update,update-submodules,version}
+usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,update,update-submodules,version}
 
 
 
@@ -48,6 +48,11 @@ usage: mposcli [-h] {build,cp,flash,run-desktop,update,update-submodules,version
 │                        files to copy/update. But can also be used to copy/update all   │
 │                        files. see: https://docs.micropythonos.com/os-development/insta │
 │                        lling-on-esp32/                                                 │
+│   • cp-app             Copy/update internal_filesystem/apps to the device via          │
+│                        "mpremote fs cp". Display a file chooser to select which app to │
+│                        copy/update. But can also be used to copy/update all files.     │
+│                        see: https://docs.micropythonos.com/os-development/installing-o │
+│                        n-esp32/                                                        │
 │   • flash              Flash MicroPythonOS to the device. Display a file chooser to    │
 │                        select the image to flash. All lvgl_micropython/build/*.bin     │
 │                        files will be shown in the file chooser. see: https://docs.micr │
@@ -115,6 +120,29 @@ all files. see: https://docs.micropythonos.com/os-development/installing-on-esp3
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated cp end ✂✂✂)
+
+
+
+
+## mposcli cp-app
+
+[comment]: <> (✂✂✂ auto generated cp-app start ✂✂✂)
+```
+usage: mposcli cp-app [-h] [--reset | --no-reset] [--repl | --no-repl] [-v]
+
+Copy/update internal_filesystem/apps to the device via "mpremote fs cp". Display a file
+chooser to select which app to copy/update. But can also be used to copy/update all files.
+see: https://docs.micropythonos.com/os-development/installing-on-esp32/
+
+╭─ options ──────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help           show this help message and exit                                   │
+│ --reset, --no-reset  Reset the device after copy/update? (default: True)               │
+│ --repl, --no-repl    After flashing/verify start REPL with mpremote to see the output  │
+│                      of the device? (default: True)                                    │
+│ -v, --verbosity      Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)           │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+```
+[comment]: <> (✂✂✂ auto generated cp-app end ✂✂✂)
 
 
 
@@ -274,7 +302,9 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [v0.3.1](https://github.com/jedie/mposcli/compare/v0.3.0...v0.3.1)
+* [v0.4.0](https://github.com/jedie/mposcli/compare/v0.3.0...v0.4.0)
+  * 2026-02-24 - NEW command: "cp-app" to install/update internal_filesystem/apps
+  * 2026-02-24 - Log skipped files
   * 2026-02-23 - Update requirements and fix code style
   * 2026-02-23 - "build" command: target as positional argument
   * 2026-02-23 - Expand "cp" command and allow optional filesystem path
