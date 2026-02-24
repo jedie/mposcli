@@ -275,6 +275,7 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.3.1](https://github.com/jedie/mposcli/compare/v0.3.0...v0.3.1)
+  * 2026-02-24 - Log skipped files
   * 2026-02-23 - Update requirements and fix code style
   * 2026-02-23 - "build" command: target as positional argument
   * 2026-02-23 - Expand "cp" command and allow optional filesystem path
