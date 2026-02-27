@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 def _update_submodules(git: Git):
     git.git_verbose_check_call('submodule', 'foreach', '--recursive', 'git', 'clean', '-f', ';', 'git', 'checkout', '.')
-    git.git_verbose_check_call('pull', '--recurse-submodules')
+    git.git_verbose_check_call('pull', '--recurse-submodules', '--force')
 
 
 @app.command
