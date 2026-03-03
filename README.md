@@ -46,8 +46,8 @@ usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,update,update-submodules,
 │   • cp                 Copy/update internal_filesystem/lib/mpos files to the device    │
 │                        via "mpremote fs cp". Display a file chooser to select which    │
 │                        files to copy/update. But can also be used to copy/update all   │
-│                        files. see: https://docs.micropythonos.com/os-development/insta │
-│                        lling-on-esp32/                                                 │
+│                        files. see:                                                     │
+│                        https://docs.micropythonos.com/architecture/filesystem/         │
 │   • cp-app             Copy/update internal_filesystem/apps to the device via          │
 │                        "mpremote fs cp". Display a file chooser to select which app to │
 │                        copy/update. But can also be used to copy/update all files.     │
@@ -78,13 +78,13 @@ usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,update,update-submodules,
 
 [comment]: <> (✂✂✂ auto generated build start ✂✂✂)
 ```
-usage: mposcli build [-h] [{esp32,esp32s3,unix,macOS}] [-v]
+usage: mposcli build [-h] [{esp32,esp32s3,unphone,unix,macOS}] [-v]
 
 Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:
 https://docs.micropythonos.com/os-development/
 
 ╭─ positional arguments ───────────────────────────────────────────────────╮
-│ [{esp32,esp32s3,unix,macOS}]                                             │
+│ [{esp32,esp32s3,unphone,unix,macOS}]                                     │
 │                  Target platform to build for. (default: unix)           │
 ╰──────────────────────────────────────────────────────────────────────────╯
 ╭─ options ────────────────────────────────────────────────────────────────╮
@@ -104,7 +104,7 @@ usage: mposcli cp [-h] [CP OPTIONS]
 
 Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display
 a file chooser to select which files to copy/update. But can also be used to copy/update
-all files. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
+all files. see: https://docs.micropythonos.com/architecture/filesystem/
 
 ╭─ positional arguments ─────────────────────────────────────────────────────────────────╮
 │ [{None}|PATH]         Optional file or directory path. (default: None)                 │
@@ -305,6 +305,7 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/mposcli/compare/v0.4.1...main)
+  * 2026-03-03 - Refactor "cp" command
   * 2026-03-03 - flash command: use port auto detection as default
 * [v0.4.1](https://github.com/jedie/mposcli/compare/v0.4.0...v0.4.1)
   * 2026-02-27 - Use "--force" for pulling submodules to overwrite local changes
