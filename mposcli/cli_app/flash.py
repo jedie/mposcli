@@ -18,7 +18,15 @@ logger = logging.getLogger(__name__)
 
 @app.command
 def flash(
-    port: Annotated[str, tyro.conf.arg(help='Port used for esptool and mpremote')] = '/dev/ttyUSB0',
+    port: Annotated[
+        str | None,
+        tyro.conf.arg(
+            help=(
+                'Port used for esptool and mpremote, e.g.: "/dev/ttyUSB0" or "/dev/ttyACM0" etc.'
+                ' Leave empty for autodetection'
+            )
+        ),
+    ] = None,
     address: Annotated[str, tyro.conf.arg(help='Address')] = '0x0',
     flash_size: Annotated[str, tyro.conf.arg(help='Flash Size')] = 'detect',
     verify: Annotated[bool, tyro.conf.arg(help='Verify after flashing?')] = True,
@@ -46,10 +54,12 @@ def flash(
     image_files = lvgl_micropython_build_path.glob('*.bin')
     image_file = file_chooser(image_files)
 
+    popenargs = (esptool_bin,)
+    if port:
+        popenargs += ('--port', port)
+
     verbose_check_call(
-        esptool_bin,
-        '--port',
-        port,
+        *popenargs,
         'write-flash',
         '--flash-size',
         flash_size,
@@ -63,9 +73,7 @@ def flash(
 
     if verify:
         verbose_check_call(
-            esptool_bin,
-            '--port',
-            port,
+            *popenargs,
             'verify-flash',
             address,
             image_file,

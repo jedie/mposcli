@@ -158,7 +158,9 @@ https://docs.micropythonos.com/os-development/installing-on-esp32/
 
 ╭─ options ──────────────────────────────────────────────────────────────────────────────╮
 │ -h, --help             show this help message and exit                                 │
-│ --port STR             Port used for esptool and mpremote (default: /dev/ttyUSB0)      │
+│ --port {None}|STR      Port used for esptool and mpremote, e.g.: "/dev/ttyUSB0" or     │
+│                        "/dev/ttyACM0" etc. Leave empty for autodetection (default:     │
+│                        None)                                                           │
 │ --address STR          Address (default: 0x0)                                          │
 │ --flash-size STR       Flash Size (default: detect)                                    │
 │ --verify, --no-verify  Verify after flashing? (default: True)                          │
@@ -302,6 +304,8 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/mposcli/compare/v0.4.1...main)
+  * 2026-03-03 - flash command: use port auto detection as default
 * [v0.4.1](https://github.com/jedie/mposcli/compare/v0.4.0...v0.4.1)
   * 2026-02-27 - Use "--force" for pulling submodules to overwrite local changes
 * [v0.4.0](https://github.com/jedie/mposcli/compare/v0.3.0...v0.4.0)
@@ -314,13 +318,13 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
   * 2026-02-18 - Add "update" beside "update-submodules"
   * 2026-02-17 - Update requirements
   * 2026-02-16 - update README
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.2.0](https://github.com/jedie/mposcli/compare/v0.1.0...v0.2.0)
   * 2026-02-16 - New CLI command: "cp" with convenience features.
   * 2026-02-16 - New command: "flash" with file selector
   * 2026-02-16 - Update README.md
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.1.0](https://github.com/jedie/mposcli/compare/1695026...v0.1.0)
   * 2026-02-16 - Add "update-submodules" command
   * 2026-02-16 - Add "build" command
