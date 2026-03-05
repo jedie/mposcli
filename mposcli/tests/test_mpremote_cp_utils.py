@@ -2,13 +2,13 @@ import tempfile
 from pathlib import Path
 from unittest import TestCase
 
-from mposcli.mpremote_cp_utils import MpOsPathResolver
+from mposcli.utilities.mpremote import MpOsPathResolver
 
 
 class ProjectSetupTestCase(TestCase):
     def test_mpos_path_resolver(self):
         with tempfile.TemporaryDirectory() as temp_dir:
-            mpos_path = Path(temp_dir)
+            mpos_path = Path(temp_dir).resolve()
 
             camera_assets = mpos_path / 'internal_filesystem/apps/com.micropythonos.camera/assets/'
             camera_assets.mkdir(parents=True)

@@ -12,9 +12,9 @@ from rich import print
 
 from mposcli.cli_app import app
 from mposcli.mpos_utils import get_mpos_path
-from mposcli.mpremote_cp_utils import MpOsPathResolver
 from mposcli.tools import get_mpremote_bin
 from mposcli.user_input import choose_newest_modified_directory, get_newest_files
+from mposcli.utilities.mpremote import MpOsPathResolver, start_mpremote_repl
 
 
 logger = logging.getLogger(__name__)
@@ -100,15 +100,7 @@ def cp(
         )
 
     if repl:
-        time.sleep(1)
-        verbose_check_call(
-            mpremote_bin,
-            'repl',
-            verbose=True,
-            cwd=mpos_path,
-            timeout=None,
-            text=None,
-        )
+        start_mpremote_repl()
 
 
 @app.command

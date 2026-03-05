@@ -1,6 +1,12 @@
+import shlex
+import subprocess
+import time
 from pathlib import Path
 
 from bx_py_utils.path import assert_is_dir
+from rich import print
+
+from mposcli.tools import get_mpremote_bin
 
 
 class MpOsPathResolver:
@@ -37,3 +43,22 @@ class MpOsPathResolver:
             remote_str = f':{remote_path}'
 
         return local_path_str, remote_str
+
+
+def start_mpremote_repl(max_try=10, wait_time=1):
+    print('Starting mpremote REPL...')
+    time.sleep(wait_time)
+    mpremote_bin = get_mpremote_bin()
+
+    popen_args = (mpremote_bin, 'repl')
+
+    for try_count in range(max_try):
+        print(f'\n+ {shlex.join(str(arg) for arg in popen_args)}')
+        try:
+            return subprocess.check_call(popen_args)
+        except subprocess.CalledProcessError as err:
+            print(
+                f'[yellow]mpremote finished with [red]exit code {err.returncode!r}[/red]'
+                f' Retrying in {wait_time} seconds... (try {try_count + 1}/{max_try})'
+            )
+            time.sleep(wait_time)
