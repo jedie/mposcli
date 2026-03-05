@@ -14,6 +14,7 @@ from mposcli.cli_app import app
 from mposcli.mpos_utils import get_mpos_path
 from mposcli.tools import get_mpremote_bin
 from mposcli.user_input import choose_newest_modified_directory, get_newest_files
+from mposcli.utilities.mpremote import MpOsPathResolver, start_mpremote_repl
 
 
 logger = logging.getLogger(__name__)
@@ -44,58 +45,45 @@ def cp(
     Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp".
     Display a file chooser to select which files to copy/update.
     But can also be used to copy/update all files.
-    see: https://docs.micropythonos.com/os-development/installing-on-esp32/
+    see: https://docs.micropythonos.com/architecture/filesystem/
     """
     setup_logging(verbosity=verbosity)
 
     mpos_path = get_mpos_path()
-
-    internal_fs = mpos_path / 'internal_filesystem'
-    lib_mpos = internal_fs / 'lib' / 'mpos'
-    assert_is_dir(lib_mpos)
-    apps_path = internal_fs / 'apps'
-    assert_is_dir(apps_path)
+    resolver = MpOsPathResolver(mpos=mpos_path)
 
     mpremote_bin = get_mpremote_bin()
 
     print('\n')
 
-    popenargs = (mpremote_bin, 'fs', 'cp')
-
-    if local_path:
-        if not local_path.is_absolute():
-            local_path = mpos_path / local_path
-
-        print(f'Copy/update app: "{local_path}" ...')
-
-        if not local_path.exists():
-            print(f'[red]Error: The specified source path "{local_path}" does not exist.[/red]')
-            return
-
-        # Is source a sub path of "apps_path" ?
-        if local_path.is_relative_to(apps_path):
-            local_rel_path = local_path.relative_to(mpos_path)
-            remote_path = f':/{local_path.relative_to(internal_fs)}'
-        else:
-            raise NotImplementedError
-    else:
-        local_path = get_newest_files(lib_mpos, limit=new_file_limit)
+    if not local_path:
+        # Let's the user select from the list of the newest modified files in internal_filesystem/lib/mpos:
+        local_path = get_newest_files(resolver.lib_mpos, limit=new_file_limit)
         if not local_path:
             print('Copy/update all files in lib/mpos to the device')
-            local_path = lib_mpos
+            local_path = resolver.lib_mpos
 
-        local_rel_path = local_path.relative_to(mpos_path)
-        remote_path = f':/{local_path.relative_to(lib_mpos.parent)}'
+    print(f'Copy/update app: "{local_path}" ...')
+
+    if not local_path.exists():
+        print(f'[red]Error: The specified source path "{local_path}" does not exist.[/red]')
+        return
+
+    local_path_str, remote_str = resolver.resolve(local_path)
+
+    popenargs = (mpremote_bin, 'fs')
 
     if local_path.is_dir():
         popenargs += ('-r',)
-        print(f'Copying directory "[bold]{local_rel_path}[/bold]" to device at "[bold]{remote_path}[/bold]" ...')
+        print(f'Copying directory "[bold]{local_path_str}[/bold]" to device at "[bold]{remote_str}[/bold]" ...')
     else:
-        print(f'Copying file "[bold]{local_rel_path}[/bold]" to device at "[bold]{remote_path}[/bold]" ...')
+        print(f'Copying file "[bold]{local_path_str}[/bold]" to device at "[bold]{remote_str}[/bold]" ...')
 
-    popenargs += (local_rel_path, remote_path)
     verbose_check_call(
         *popenargs,
+        'cp',
+        local_path_str,
+        remote_str,
         verbose=True,
         cwd=mpos_path,
         text=None,
@@ -112,15 +100,7 @@ def cp(
         )
 
     if repl:
-        time.sleep(1)
-        verbose_check_call(
-            mpremote_bin,
-            'repl',
-            verbose=True,
-            cwd=mpos_path,
-            timeout=None,
-            text=None,
-        )
+        start_mpremote_repl()
 
 
 @app.command
@@ -158,14 +138,14 @@ def cp_app(
 
     if not app:
         print('Copy/update all apps in "internal_filesystem/apps" to the device')
-        local_rel_path = 'internal_filesystem/apps'
+        local_path = 'internal_filesystem/apps'
         remote_path = ':/apps'
     else:
         print(f'Copy/update {app=} ...')
-        local_rel_path = f'internal_filesystem/apps/{app.name}'
+        local_path = f'internal_filesystem/apps/{app.name}'
         remote_path = f':/apps/{app.name}'
 
-    popenargs += (local_rel_path, remote_path)
+    popenargs += (local_path, remote_path)
     verbose_check_call(
         *popenargs,
         verbose=True,

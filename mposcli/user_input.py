@@ -46,7 +46,7 @@ def file_chooser(paths) -> Path | None:
     return selection
 
 
-def get_newest_files(directory, limit=10) -> Path | None:
+def get_newest_files(directory: Path, limit=10) -> Path | None:
     files = []
 
     def scan(dir_path):
@@ -60,7 +60,7 @@ def get_newest_files(directory, limit=10) -> Path | None:
     scan(directory)
     files.sort(key=lambda x: x[1], reverse=True)
 
-    print(f'[bold]Choose a file[/bold] (only from the newest {limit}):\n')
+    print(f'[bold]Choose a file[/bold] (only from the newest {limit} from {directory}):\n')
     for idx, (entry, mtime) in enumerate(files[:limit]):
         dt = datetime.datetime.fromtimestamp(mtime).astimezone().strftime('%Y-%m-%d %H:%M:%S')
         rel_path = Path(entry.path).relative_to(directory)
@@ -85,8 +85,9 @@ def get_newest_files(directory, limit=10) -> Path | None:
         print(f'[red]Invalid selection: {number}[/red]')
         sys.exit(1)
 
-    print(f'Selected file: {selection}')
-    return Path(selection)
+    absolute_path = directory / selection
+    print(f'Selected file: {absolute_path}')
+    return absolute_path
 
 
 def choose_newest_modified_directory(base_dir: Path) -> Path:

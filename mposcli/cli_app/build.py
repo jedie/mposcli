@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 @app.command
 def build(
     target: Annotated[
-        Literal['esp32', 'esp32s3', 'unix', 'macOS'],
+        Literal['esp32', 'esp32s3', 'unphone', 'unix', 'macOS'],
         tyro.conf.arg(
             help='Target platform to build for.',
         ),

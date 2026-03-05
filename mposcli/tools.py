@@ -1,3 +1,4 @@
+import functools
 import shutil
 import sys
 from pathlib import Path
@@ -15,12 +16,14 @@ def get_bin(name: str) -> Path:
     return Path(bin_path)
 
 
+@functools.cache
 def get_esptool_bin() -> Path:
     esptool_bin = get_bin('esptool')
     verbose_check_call(esptool_bin, 'version')
     return esptool_bin
 
 
+@functools.cache
 def get_mpremote_bin():
     mpremote_bin = get_bin('mpremote')
     verbose_check_call(mpremote_bin, '--version')
